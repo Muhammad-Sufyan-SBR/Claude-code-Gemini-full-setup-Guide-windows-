@@ -1,15 +1,35 @@
-🚀 Claude Code + Gemini Full Setup (Windows Guide)
-
-This guide helps you set up Claude-Code + Gemini Models together using
-claude-code + claude-code-router.
+  Bilkul! Aapka jo text hai usme code blocks aur commands ke liye proper Markdown syntax nahi laga hua jiski wajah se wo as code block show nahi ho rahe.
 
 
 ---
 
-🔥 STEP 0 — Confirm Node.js
+Markdown mein code ya command blocks dikhane ke liye triple backticks (```) use karte hain, jese:
+
+```bash
+npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
+```
+
+Ye is tarah dikhega:
+
+npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
+
+
+---
+
+Aapke diye hue text ko main proper Markdown syntax ke sath edit kar deta hoon, taake commands alag-alag code blocks mein dikhai dein aur puri README file professional lage:
+
+# 🚀 Claude Code + Gemini Full Setup (Windows Guide)
+
+This guide helps you set up **Claude-Code + Gemini Models** together using  
+`claude-code` + `claude-code-router`.
+
+---
+
+## 🔥 STEP 0 — Confirm Node.js
 
 PowerShell open karein → run:
 
+```bash
 node --version
 
 Agar 18+ version nahi hai → install karein:
@@ -32,9 +52,9 @@ Agar 18+ version nahi hai → install karein:
 
 4. Key copy kar len (example):
 
+
+
 AIzaSy........
-
-
 
 
 ---
@@ -52,7 +72,7 @@ npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
 
 PowerShell (normal mode):
 
-mkdir $HOME/.claude-code-router  
+mkdir $HOME/.claude-code-router
 mkdir $HOME/.claude
 
 
@@ -68,33 +88,33 @@ notepad $HOME/.claude-code-router/config.json
 
 Notepad open hoga → isme ye exact JSON paste karein:
 
-{  
-  "LOG": true,  
-  "LOG_LEVEL": "info",  
-  "HOST": "127.0.0.1",  
-  "PORT": 3456,  
-  "API_TIMEOUT_MS": 600000,  
-  "Providers": [  
-    {  
-      "name": "gemini",  
-      "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",  
-      "api_key": "$GOOGLE_API_KEY",  
-      "models": [  
-        "gemini-2.5-flash",  
-        "gemini-2.0-flash"  
-      ],  
-      "transformer": {  
-        "use": ["gemini"]  
-      }  
-    }  
-  ],  
-  "Router": {  
-    "default": "gemini,gemini-2.5-flash",  
-    "background": "gemini,gemini-2.5-flash",  
-    "think": "gemini,gemini-2.5-flash",  
-    "longContext": "gemini,gemini-2.5-flash",  
-    "longContextThreshold": 60000  
-  }  
+{
+  "LOG": true,
+  "LOG_LEVEL": "info",
+  "HOST": "127.0.0.1",
+  "PORT": 3456,
+  "API_TIMEOUT_MS": 600000,
+  "Providers": [
+    {
+      "name": "gemini",
+      "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",
+      "api_key": "$GOOGLE_API_KEY",
+      "models": [
+        "gemini-2.5-flash",
+        "gemini-2.0-flash"
+      ],
+      "transformer": {
+        "use": ["gemini"]
+      }
+    }
+  ],
+  "Router": {
+    "default": "gemini,gemini-2.5-flash",
+    "background": "gemini,gemini-2.5-flash",
+    "think": "gemini,gemini-2.5-flash",
+    "longContext": "gemini,gemini-2.5-flash",
+    "longContextThreshold": 60000
+  }
 }
 
 ✔ Save
@@ -134,8 +154,8 @@ Agar value show ho jaye → Perfect! 🔥
 
 Run:
 
-claude --version  
-ccr version  
+claude --version
+ccr version
 echo $env:GOOGLE_API_KEY
 
 Agar sab commands ka output aa jaye → ✔ Setup success
@@ -155,12 +175,12 @@ Wait until you see:
 
 Terminal 2:
 
-cd your-project-folder  
+cd your-project-folder
 ccr code
 
 OR:
 
-eval "$(ccr activate)"  
+eval "$(ccr activate)"
 claude
 
 
@@ -178,4 +198,10 @@ hi
 
 Agar Claude reply kare →
 🎉 Congratulations! FREE CLAUDE CODE + GEMINI WORKING! 🚀💯
-Ye readme hai or or Achwy se explain kar aalag wording Mai bnao taa k Mai Apne readme bna kar isko apni repo Mai add karo
+
+---
+
+### Ab aap ye README.md file mein copy-paste karenge to commands aur code blocks bilkul sahi aur clearly show karenge.
+
+Agar chahiye, main ye file aapke liye `.md` format mein bana ke bhi upload kar sakta hoon.  
+Batayega!
