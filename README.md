@@ -1,189 +1,181 @@
+🚀 Claude Code + Gemini Full Setup (Windows Guide)
 
-# 🚀 Claude Code + Gemini Full Setup Guide (Windows)
+This guide helps you set up Claude-Code + Gemini Models together using
+claude-code + claude-code-router.
 
-Ye guide aapko step-by-step Windows par **Claude-Code** aur **Google Gemini models** ko setup karne mein madad degi.  
-Isme Node.js check karna, required tools install karna, config files banana, API key set karna aur daily workflow shamil hai.
 
 ---
 
-## 🔥 Step 0 — Node.js Installation Check
+🔥 STEP 0 — Confirm Node.js
 
-Sabse pehle apne system mein Node.js install hai ya nahi, aur version 18 ya usse upar hai ya nahi, ye check karein:
+PowerShell open karein → run:
 
-PowerShell ya Command Prompt kholen aur ye command chalayein:
-
-```bash
 node --version
 
-Agar version 18 ya usse zyada nahi dikh raha, to official website se latest version install kar lein:
+Agar 18+ version nahi hai → install karein:
 
 👉 https://nodejs.org
 
 
 ---
 
-🔥 Step 1 — Google API Key Le Kar Aana
+🔥 STEP 1 — GET GOOGLE API KEY
 
-Claude-Code mein Gemini model chalane ke liye Google API key chahiye hoti hai. Isko lene ke liye:
-
-1. Browser mein jaake https://aistudio.google.com kholen
+1. Open: https://aistudio.google.com
 
 
-2. Wahan Get API Key ya Create API Key par click karein
+2. Click → Get API Key
 
 
-3. Jo API Key mile, usko copy kar lein (ye kuch is tarah dikhega: AIzaSy...)
+3. Click → Create API Key
+
+
+4. Key copy kar len (example):
+
+AIzaSy........
 
 
 
 
 ---
 
-🔥 Step 2 — Required Tools Install Karna
+🔥 STEP 2 — INSTALL REQUIRED TOOLS
 
-Ab PowerShell ko Administrator mode mein open kar ke ye command chalayein:
+PowerShell (Run as Administrator):
 
 npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
 
-Ye dono tools global install ho jayenge jo Claude-Code aur Router ke liye zaruri hain.
+
+---
+
+🔥 STEP 3 — CREATE CONFIG FOLDERS
+
+PowerShell (normal mode):
+
+mkdir $HOME/.claude-code-router  
+mkdir $HOME/.claude
 
 
 ---
 
-🔥 Step 3 — Configuration Folders Banana
+🔥 STEP 4 — CREATE CONFIG.JSON (WINDOWS VERSION)
 
-PowerShell normal mode mein ye commands chalayein taake config folders ban jayein:
+Windows me cat << EOF work nahi karta, isliye Notepad method use hoga.
 
-mkdir $HOME\.claude-code-router
-mkdir $HOME\.claude
+Run:
 
+notepad $HOME/.claude-code-router/config.json
 
----
+Notepad open hoga → isme ye exact JSON paste karein:
 
-🔥 Step 4 — Config File Banayein (config.json)
-
-Windows mein cat << EOF command work nahi karta, is liye Notepad se config file banana hota hai.
-
-PowerShell mein ye command chalayein:
-
-notepad $HOME\.claude-code-router\config.json
-
-Notepad khulega, usmein niche wala JSON bilkul waise hi paste karein:
-
-{
-  "LOG": true,
-  "LOG_LEVEL": "info",
-  "HOST": "127.0.0.1",
-  "PORT": 3456,
-  "API_TIMEOUT_MS": 600000,
-  "Providers": [
-    {
-      "name": "gemini",
-      "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",
-      "api_key": "$GOOGLE_API_KEY",
-      "models": [
-        "gemini-2.5-flash",
-        "gemini-2.0-flash"
-      ],
-      "transformer": {
-        "use": ["gemini"]
-      }
-    }
-  ],
-  "Router": {
-    "default": "gemini,gemini-2.5-flash",
-    "background": "gemini,gemini-2.5-flash",
-    "think": "gemini,gemini-2.5-flash",
-    "longContext": "gemini,gemini-2.5-flash",
-    "longContextThreshold": 60000
-  }
+{  
+  "LOG": true,  
+  "LOG_LEVEL": "info",  
+  "HOST": "127.0.0.1",  
+  "PORT": 3456,  
+  "API_TIMEOUT_MS": 600000,  
+  "Providers": [  
+    {  
+      "name": "gemini",  
+      "api_base_url": "https://generativelanguage.googleapis.com/v1beta/models/",  
+      "api_key": "$GOOGLE_API_KEY",  
+      "models": [  
+        "gemini-2.5-flash",  
+        "gemini-2.0-flash"  
+      ],  
+      "transformer": {  
+        "use": ["gemini"]  
+      }  
+    }  
+  ],  
+  "Router": {  
+    "default": "gemini,gemini-2.5-flash",  
+    "background": "gemini,gemini-2.5-flash",  
+    "think": "gemini,gemini-2.5-flash",  
+    "longContext": "gemini,gemini-2.5-flash",  
+    "longContextThreshold": 60000  
+  }  
 }
 
-Phir file ko Save kar ke band kar dein.
+✔ Save
+✔ Close
 
 
 ---
 
-🔥 Step 5 — Apni Google API Key Set Karein (Windows Environment Variable)
+🔥 STEP 5 — SET YOUR API KEY (WINDOWS METHOD)
 
-PowerShell ko Admin mode mein open karein aur ye command chalayein (apni key ke sath):
+PowerShell (Run as Admin):
 
-[System.Environment]::SetEnvironmentVariable('GOOGLE_API_KEY', 'YAHAN_APNI_API_KEY_DALEIN', 'User')
+[System.Environment]::SetEnvironmentVariable('GOOGLE_API_KEY', 'YOUR_KEY_HERE', 'User')
 
-Misal ke taur par:
+Replace:
 
-[System.Environment]::SetEnvironmentVariable('GOOGLE_API_KEY', 'AIzaSyXXXXX123456...', 'User')
+YOUR_KEY_HERE
 
-⚠️ Important: PowerShell ko close kar dein aur naya PowerShell window kholen. Phir check karein ke key sahi set hui ya nahi:
+With your actual Google API Key.
+
+Example:
+
+[System.Environment]::SetEnvironmentVariable('GOOGLE_API_KEY', 'AIzaSyXXXXX...', 'User')
+
+⚠️ IMPORTANT
+
+PowerShell close karen → new PowerShell open → check:
 
 echo $env:GOOGLE_API_KEY
 
-Agar aapko apni key nazar aaye, to setup sahi hai.
+Agar value show ho jaye → Perfect! 🔥
 
 
 ---
 
-🔥 Step 6 — Setup Verify Karein
+🔥 STEP 6 — VERIFY EVERYTHING
 
-Ab ye commands chalakar check kar lein:
+Run:
 
-claude --version
-ccr version
+claude --version  
+ccr version  
 echo $env:GOOGLE_API_KEY
 
-Agar har command ka output mil jaye, to sab kuch theek se setup ho gaya hai.
+Agar sab commands ka output aa jaye → ✔ Setup success
 
 
 ---
 
-🔥 Step 7 — Rozana Kaam Karne Ka Tareeqa (Daily Workflow)
+🔥 STEP 7 — DAILY WORKFLOW
 
 Terminal 1:
 
-Server start karne ke liye:
-
 ccr start
 
-Jab tak message na aaye:
+Wait until you see:
 
 ✔ Service started successfully
 
-Intezaar karein.
-
 Terminal 2:
 
-Apne project folder mein jaakar code ke sath interact karne ke liye:
-
-cd your-project-folder
+cd your-project-folder  
 ccr code
 
-Ya phir:
+OR:
 
-eval "$(ccr activate)"
+eval "$(ccr activate)"  
 claude
 
 
 ---
 
-🔥 Step 8 — Verification Test
+🔥 VERIFICATION TEST
 
-Terminal mein ye command chalayein:
+Terminal:
 
 ccr code
 
-Phir type karein:
+Then type:
 
 hi
 
-Agar Claude se reply aa jaye, to mubarak ho! 🎉
-
-Aapka Claude-Code + Gemini model Windows par successfully kaam kar raha hai! 🚀💯
-
-
----
-
-Agar aapko koi masla aaye ya sawal ho, to issue raise karein ya discussion karein.
-
-Happy Coding! 😊
-
----
+Agar Claude reply kare →
+🎉 Congratulations! FREE CLAUDE CODE + GEMINI WORKING! 🚀💯
+Ye readme hai or or Achwy se explain kar aalag wording Mai bnao taa k Mai Apne readme bna kar isko apni repo Mai add karo
