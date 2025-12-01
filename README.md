@@ -1,23 +1,3 @@
-  Bilkul! Aapka jo text hai usme code blocks aur commands ke liye proper Markdown syntax nahi laga hua jiski wajah se wo as code block show nahi ho rahe.
-
-
----
-
-Markdown mein code ya command blocks dikhane ke liye triple backticks (```) use karte hain, jese:
-
-```bash
-npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
-```
-
-Ye is tarah dikhega:
-
-npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
-
-
----
-
-Aapke diye hue text ko main proper Markdown syntax ke sath edit kar deta hoon, taake commands alag-alag code blocks mein dikhai dein aur puri README file professional lage:
-
 # 🚀 Claude Code + Gemini Full Setup (Windows Guide)
 
 This guide helps you set up **Claude-Code + Gemini Models** together using  
@@ -31,63 +11,60 @@ PowerShell open karein → run:
 
 ```bash
 node --version
+```
 
-Agar 18+ version nahi hai → install karein:
+Agar **18+** version nahi hai → install karein:
 
 👉 https://nodejs.org
 
+---
+
+## 🔥 STEP 1 — GET GOOGLE API KEY
+
+1. Open: https://aistudio.google.com  
+2. Click → **Get API Key**  
+3. Click → **Create API Key**  
+4. Key copy kar len (example):  
+   ```
+   AIzaSy........
+   ```
 
 ---
 
-🔥 STEP 1 — GET GOOGLE API KEY
-
-1. Open: https://aistudio.google.com
-
-
-2. Click → Get API Key
-
-
-3. Click → Create API Key
-
-
-4. Key copy kar len (example):
-
-
-
-AIzaSy........
-
-
----
-
-🔥 STEP 2 — INSTALL REQUIRED TOOLS
+## 🔥 STEP 2 — INSTALL REQUIRED TOOLS
 
 PowerShell (Run as Administrator):
 
+```bash
 npm install -g @anthropic-ai/claude-code @musistudio/claude-code-router
-
+```
 
 ---
 
-🔥 STEP 3 — CREATE CONFIG FOLDERS
+## 🔥 STEP 3 — CREATE CONFIG FOLDERS
 
 PowerShell (normal mode):
 
+```bash
 mkdir $HOME/.claude-code-router
 mkdir $HOME/.claude
-
+```
 
 ---
 
-🔥 STEP 4 — CREATE CONFIG.JSON (WINDOWS VERSION)
+## 🔥 STEP 4 — CREATE CONFIG.JSON (WINDOWS VERSION)
 
-Windows me cat << EOF work nahi karta, isliye Notepad method use hoga.
+Windows me `cat << EOF` work nahi karta, isliye Notepad method use hoga.
 
 Run:
 
+```bash
 notepad $HOME/.claude-code-router/config.json
+```
 
-Notepad open hoga → isme ye exact JSON paste karein:
+Notepad open hoga → isme ye **exact JSON** paste karein:
 
+```json
 {
   "LOG": true,
   "LOG_LEVEL": "info",
@@ -116,92 +93,105 @@ Notepad open hoga → isme ye exact JSON paste karein:
     "longContextThreshold": 60000
   }
 }
+```
 
-✔ Save
+✔ Save  
 ✔ Close
-
 
 ---
 
-🔥 STEP 5 — SET YOUR API KEY (WINDOWS METHOD)
+## 🔥 STEP 5 — SET YOUR API KEY (WINDOWS METHOD)
 
 PowerShell (Run as Admin):
 
+```powershell
 [System.Environment]::SetEnvironmentVariable('GOOGLE_API_KEY', 'YOUR_KEY_HERE', 'User')
+```
 
 Replace:
 
+```
 YOUR_KEY_HERE
+```
 
 With your actual Google API Key.
 
 Example:
 
+```powershell
 [System.Environment]::SetEnvironmentVariable('GOOGLE_API_KEY', 'AIzaSyXXXXX...', 'User')
+```
 
-⚠️ IMPORTANT
+### ⚠️ IMPORTANT  
+PowerShell **close** karen → new PowerShell open → check:
 
-PowerShell close karen → new PowerShell open → check:
-
+```bash
 echo $env:GOOGLE_API_KEY
+```
 
-Agar value show ho jaye → Perfect! 🔥
-
+Agar value show ho jaye → **Perfect! 🔥**
 
 ---
 
-🔥 STEP 6 — VERIFY EVERYTHING
+## 🔥 STEP 6 — VERIFY EVERYTHING
 
 Run:
 
+```bash
 claude --version
 ccr version
 echo $env:GOOGLE_API_KEY
+```
 
 Agar sab commands ka output aa jaye → ✔ Setup success
 
-
 ---
 
-🔥 STEP 7 — DAILY WORKFLOW
+## 🔥 STEP 7 — DAILY WORKFLOW
 
-Terminal 1:
+### Terminal 1:
 
+```bash
 ccr start
+```
 
 Wait until you see:
 
+```
 ✔ Service started successfully
+```
 
-Terminal 2:
+### Terminal 2:
 
+```bash
 cd your-project-folder
 ccr code
+```
 
 OR:
 
+```bash
 eval "$(ccr activate)"
 claude
-
+```
 
 ---
 
-🔥 VERIFICATION TEST
+## 🔥 VERIFICATION TEST
 
 Terminal:
 
+```bash
 ccr code
+```
 
 Then type:
 
+```
 hi
+```
 
-Agar Claude reply kare →
-🎉 Congratulations! FREE CLAUDE CODE + GEMINI WORKING! 🚀💯
+Agar **Claude reply** kare →  
+🎉 **Congratulations! FREE CLAUDE CODE + GEMINI WORKING! 🚀💯**
 
----
 
-### Ab aap ye README.md file mein copy-paste karenge to commands aur code blocks bilkul sahi aur clearly show karenge.
-
-Agar chahiye, main ye file aapke liye `.md` format mein bana ke bhi upload kar sakta hoon.  
-Batayega!
